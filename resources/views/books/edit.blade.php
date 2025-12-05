@@ -9,18 +9,18 @@
     title="Edit Book Details"
     :subtitle="'Update information for: ' . $book->title" />
 
-<!-- Back Button -->
+
 <div class="mb-4">
     <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action">
         <i class="fas fa-arrow-left"></i> Back to Books
     </a>
 </div>
 
-<!-- Form Card -->
+
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <div class="form-card">
-            <!-- Book Info Badge -->
+
             <div class="alert alert-primary" style="border-radius: 10px; border-left: 4px solid #0d6efd;">
                 <i class="fas fa-info-circle"></i>
                 <strong>Editing Book ID:</strong> #{{ $book->id }} |
@@ -87,7 +87,7 @@
                     <i class="fas fa-history"></i> Previous: {{ $book->category->name }}
                 </small>
 
-                <!-- Warning if stock is 0 -->
+
                 @if($book->stock == 0)
                 <div class="alert alert-warning" style="border-radius: 10px; border-left: 4px solid #ffc107;">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -95,7 +95,7 @@
                 </div>
                 @endif
 
-                <!-- Action Buttons -->
+
                 <div class="d-flex justify-content-between gap-3 mt-4">
                     <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action">
                         <i class="fas fa-times"></i> Cancel

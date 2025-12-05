@@ -1,4 +1,3 @@
-<!-- Return Modal Component -->
 <div class="modal fade" id="returnModal{{ $borrowing->id }}" tabindex="-1" aria-labelledby="returnModalLabel{{ $borrowing->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -12,7 +11,7 @@
             <form action="{{ route('borrowings.return', $borrowing->id) }}" method="POST">
                 @csrf
                 <div class="modal-body p-4">
-                    <!-- Return Info -->
+
                     <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #0dcaf0;">
                         <h6 class="mb-2"><i class="fas fa-info-circle"></i> Return Details:</h6>
                         <p class="mb-1"><strong>Book:</strong> {{ $borrowing->book->title }}</p>
@@ -21,7 +20,7 @@
                         <p class="mb-0"><strong>Duration:</strong> {{ $borrowing->borrowed_at->diffInDays(now()) }} days</p>
                     </div>
 
-                    <!-- Success Note -->
+
                     <div class="alert alert-success" style="border-radius: 10px; border-left: 4px solid #198754;">
                         <i class="fas fa-check-circle"></i>
                         <small><strong>Action:</strong> Stock will automatically increase by 1 after return.</small>

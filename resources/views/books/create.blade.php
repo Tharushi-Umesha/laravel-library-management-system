@@ -9,14 +9,14 @@
     title="Add New Book"
     subtitle="Add a new book to your library collection" />
 
-<!-- Back Button -->
+
 <div class="mb-4">
     <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action">
         <i class="fas fa-arrow-left"></i> Back to Books
     </a>
 </div>
 
-<!-- Form Card -->
+
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <div class="form-card">
@@ -69,13 +69,13 @@
                     :required="true"
                     placeholder="-- Select a category --" />
 
-                <!-- Required Fields Note -->
+
                 <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #0dcaf0;">
                     <i class="fas fa-info-circle"></i>
                     <strong>Note:</strong> All fields marked with * are required
                 </div>
 
-                <!-- Action Buttons -->
+
                 <div class="d-flex justify-content-between gap-3 mt-4">
                     <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action">
                         <i class="fas fa-times"></i> Cancel

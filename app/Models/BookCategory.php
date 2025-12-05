@@ -10,7 +10,7 @@ class BookCategory extends Model
 
     protected $fillable = ['name'];
 
-    // Relationship: A category has many books
+
     public function books()
     {
         return $this->hasMany(Book::class, 'book_category_id');

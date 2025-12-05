@@ -3,7 +3,7 @@
 @section('title', 'Book Management')
 
 @section('content')
-<!-- Page Header -->
+
 <div class="page-header">
     <h1>
         Book Management System
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<!-- Books Table -->
+
 <div class="table-container">
     <table class="table table-hover mb-0">
         <thead style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">

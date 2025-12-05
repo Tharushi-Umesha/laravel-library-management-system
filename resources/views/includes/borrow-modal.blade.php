@@ -1,4 +1,3 @@
-<!-- Borrow Modal Component -->
 <div class="modal fade" id="borrowModal{{ $book->id }}" tabindex="-1" aria-labelledby="borrowModalLabel{{ $book->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -14,7 +13,7 @@
                 <div class="modal-body p-4">
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
 
-                    <!-- Book Info -->
+
                     <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #0dcaf0;">
                         <h6 class="mb-2"><i class="fas fa-book"></i> Book Details:</h6>
                         <p class="mb-1"><strong>Title:</strong> {{ $book->title }}</p>
@@ -22,7 +21,7 @@
                         <p class="mb-0"><strong>Available Stock:</strong> {{ $book->stock }} copies</p>
                     </div>
 
-                    <!-- User Selection -->
+
                     <div class="mb-3">
                         <label class="form-label fw-bold">
                             <i class="fas fa-user text-primary"></i> Select Member/User *
@@ -37,7 +36,7 @@
                         </select>
                     </div>
 
-                    <!-- Info Note -->
+
                     <div class="alert alert-warning" style="border-radius: 10px; border-left: 4px solid #ffc107;">
                         <i class="fas fa-exclamation-triangle"></i>
                         <small><strong>Note:</strong> Stock will automatically decrease by 1 after borrowing.</small>

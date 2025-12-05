@@ -14,7 +14,7 @@ class Book extends Model
         'book_category_id'
     ];
 
-    // Relationship: A book belongs to a category
+
     public function category()
     {
         return $this->belongsTo(BookCategory::class, 'book_category_id');
