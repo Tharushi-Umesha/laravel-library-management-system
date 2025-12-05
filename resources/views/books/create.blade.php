@@ -3,14 +3,11 @@
 @section('title', 'Add New Book')
 
 @section('content')
-<!-- Page Header -->
-<div class="page-header">
-    <h1>
-        <i class="fas fa-plus-circle"></i>
-        Add New Book
-    </h1>
-    <p class="mb-0 mt-2">Add a new book to your library collection</p>
-</div>
+
+<x-page-header
+    icon="fa-plus-circle"
+    title="Add New Book"
+    subtitle="Add a new book to your library collection" />
 
 <!-- Back Button -->
 <div class="mb-4">
@@ -26,103 +23,51 @@
             <form action="{{ route('books.store') }}" method="POST">
                 @csrf
 
-                <!-- Title Field -->
-                <div class="mb-4">
-                    <label class="form-label">
-                        <i class="fas fa-book text-primary"></i> Book Title *
-                    </label>
-                    <input
-                        type="text"
-                        name="title"
-                        class="form-control @error('title') is-invalid @enderror"
-                        value="{{ old('title') }}"
-                        placeholder="Enter book title (e.g., The Great Gatsby)"
-                        required>
-                    @error('title')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-form-input
+                    name="title"
+                    label="Book Title"
+                    icon="fa-book"
+                    :required="true"
+                    placeholder="Enter book title (e.g., The Great Gatsby)" />
 
-                <!-- Author Field -->
-                <div class="mb-4">
-                    <label class="form-label">
-                        <i class="fas fa-user-edit text-info"></i> Author Name *
-                    </label>
-                    <input
-                        type="text"
-                        name="author"
-                        class="form-control @error('author') is-invalid @enderror"
-                        value="{{ old('author') }}"
-                        placeholder="Enter author name (e.g., F. Scott Fitzgerald)"
-                        required>
-                    @error('author')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-form-input
+                    name="author"
+                    label="Author Name"
+                    icon="fa-user-edit"
+                    :required="true"
+                    placeholder="Enter author name (e.g., F. Scott Fitzgerald)" />
 
-                <!-- Price and Stock Row -->
                 <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <label class="form-label">
-                            <i class="fas fa-dollar-sign text-success"></i> Price (USD) *
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">$</span>
-                            <input
-                                type="number"
-                                step="0.01"
-                                name="price"
-                                class="form-control @error('price') is-invalid @enderror"
-                                value="{{ old('price') }}"
-                                placeholder="29.99"
-                                min="0"
-                                required>
-                            @error('price')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <small class="text-muted">Enter price in dollars (e.g., 29.99)</small>
-                    </div>
-
-                    <div class="col-md-6 mb-4">
-                        <label class="form-label">
-                            <i class="fas fa-boxes text-warning"></i> Stock Quantity *
-                        </label>
-                        <input
+                    <div class="col-md-6">
+                        <x-form-input
+                            name="price"
+                            label="Price (USD)"
+                            icon="fa-dollar-sign"
                             type="number"
+                            step="0.01"
+                            :min="0"
+                            :required="true"
+                            placeholder="29.99" />
+                    </div>
+                    <div class="col-md-6">
+                        <x-form-input
                             name="stock"
-                            class="form-control @error('stock') is-invalid @enderror"
-                            value="{{ old('stock') }}"
-                            placeholder="10"
-                            min="0"
-                            required>
-                        @error('stock')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <small class="text-muted">Number of copies available</small>
+                            label="Stock Quantity"
+                            icon="fa-boxes"
+                            type="number"
+                            :min="0"
+                            :required="true"
+                            placeholder="10" />
                     </div>
                 </div>
 
-                <!-- Category Field -->
-                <div class="mb-4">
-                    <label class="form-label">
-                        <i class="fas fa-tag text-danger"></i> Book Category *
-                    </label>
-                    <select
-                        name="book_category_id"
-                        class="form-select @error('book_category_id') is-invalid @enderror"
-                        required>
-                        <option value="">-- Select a category --</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ old('book_category_id') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                    @error('book_category_id')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <x-form-select
+                    name="book_category_id"
+                    label="Book Category"
+                    icon="fa-tag"
+                    :options="$categories"
+                    :required="true"
+                    placeholder="-- Select a category --" />
 
                 <!-- Required Fields Note -->
                 <div class="alert alert-info" style="border-radius: 10px; border-left: 4px solid #0dcaf0;">
@@ -144,33 +89,4 @@
     </div>
 </div>
 
-<!-- Preview Card (Optional Enhancement) -->
-<div class="row justify-content-center mt-4">
-    <div class="col-lg-8">
-        <div class="card border-0" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px;">
-            <div class="card-body text-white text-center py-4">
-                <i class="fas fa-lightbulb fa-2x mb-3"></i>
-                <h5>Quick Tips</h5>
-                <ul class="text-start" style="max-width: 500px; margin: 0 auto;">
-                    <li>Use descriptive titles that are easy to search</li>
-                    <li>Include the full author name for better organization</li>
-                    <li>Set realistic stock numbers based on available copies</li>
-                    <li>Choose the most appropriate category for easy filtering</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection
-
-@push('scripts')
-<script>
-    // Auto-format price input
-    document.querySelector('input[name="price"]').addEventListener('blur', function() {
-        if (this.value) {
-            this.value = parseFloat(this.value).toFixed(2);
-        }
-    });
-</script>
-@endpush
