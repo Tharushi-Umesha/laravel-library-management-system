@@ -18,13 +18,13 @@ class BookBorrowing extends Model
         'returned_at' => 'datetime',
     ];
 
-    // Relationship: Borrowing belongs to a user
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relationship: Borrowing belongs to a book
+
     public function book()
     {
         return $this->belongsTo(Book::class);

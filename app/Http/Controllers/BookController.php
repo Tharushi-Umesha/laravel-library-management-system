@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    // Display all books (Homepage)
+
     public function index(Request $request)
     {
         $categories = BookCategory::all();
 
-        // Filter by category if selected
+
         $query = Book::with('category');
 
         if ($request->has('category') && $request->category != '') {
@@ -25,14 +25,14 @@ class BookController extends Controller
         return view('books.index', compact('books', 'categories'));
     }
 
-    // Show create form
+
     public function create()
     {
         $categories = BookCategory::all();
         return view('books.create', compact('categories'));
     }
 
-    // Store new book
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -49,14 +49,14 @@ class BookController extends Controller
             ->with('success', 'Book added successfully!');
     }
 
-    // Show edit form
+
     public function edit(Book $book)
     {
         $categories = BookCategory::all();
         return view('books.edit', compact('book', 'categories'));
     }
 
-    // Update book
+
     public function update(Request $request, Book $book)
     {
         $validated = $request->validate([
@@ -73,7 +73,7 @@ class BookController extends Controller
             ->with('success', 'Book updated successfully!');
     }
 
-    // Delete book
+
     public function destroy(Book $book)
     {
         $book->delete();

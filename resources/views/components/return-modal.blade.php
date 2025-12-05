@@ -25,7 +25,7 @@
                         <p class="mb-0"><strong>Duration:</strong> {{ $borrowing->borrowed_at->diffInDays(now()) }} days</p>
                     </div>
 
-                    <!-- Success Note -->
+
                     <div class="alert alert-success" style="border-radius: 10px; border-left: 4px solid #198754;">
                         <i class="fas fa-check-circle"></i>
                         <small><strong>Action:</strong> Stock will automatically increase by 1 after return.</small>
