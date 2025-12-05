@@ -3,50 +3,39 @@
 @section('title', 'Borrow Books')
 
 @section('content')
-<!-- Page Header -->
+
 <div class="page-header">
     <h1>
-        <i class="fas fa-book-reader"></i>
         Borrow Books
     </h1>
     <p class="mb-0 mt-2">Issue books to library members</p>
 </div>
 
-<!-- Quick Stats using Component -->
-<div class="row mb-4">
-    <div class="col-md-4 mb-3">
+<div class="row mb-4 g-3">
+    <div class="col-md-4">
         <x-stats-card
-            icon="fa-books"
-            color="success"
+            icon="fa-book-open"
             :count="$books->where('stock', '>', 0)->count()"
             label="Books Available" />
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4">
         <x-stats-card
-            icon="fa-times-circle"
-            color="danger"
+            icon="fa-exclamation-triangle"
             :count="$books->where('stock', 0)->count()"
             label="Out of Stock" />
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4">
         <x-stats-card
             icon="fa-users"
-            color="primary"
             :count="$users->count()"
             label="Total Members" />
     </div>
 </div>
 
-<!-- Books Table -->
-<div class="table-container">
-    <div class="p-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px 15px 0 0;">
-        <h5 class="mb-0">
-            <i class="fas fa-list"></i> Available Books for Borrowing
-        </h5>
-    </div>
 
+<div class="table-container">
     <table class="table table-hover mb-0">
-        <thead style="background: #f8f9fa;">
+        <thead style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
             <tr>
                 <th><i class="fas fa-hashtag"></i> ID</th>
                 <th><i class="fas fa-book"></i> Title</th>
@@ -62,7 +51,11 @@
                 <td><strong>#{{ $book->id }}</strong></td>
                 <td><strong>{{ $book->title }}</strong></td>
                 <td>{{ $book->author }}</td>
-                <td><span class="badge bg-info">{{ $book->category->name }}</span></td>
+                <td>
+                    <span class="badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 0.875rem; padding: 6px 12px;">
+                        {{ $book->category->name }}
+                    </span>
+                </td>
                 <td>
                     @if($book->stock > 0)
                     <span class="stock-badge badge-in-stock">
@@ -104,10 +97,10 @@
     </table>
 </div>
 
-<!-- Instructions Card -->
+
 <div class="row mt-4">
     <div class="col-12">
-        <div class="card border-0" style="background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); border-radius: 15px;">
+        <div class="card border-0" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px;">
             <div class="card-body text-white">
                 <h5><i class="fas fa-info-circle"></i> How to Borrow a Book</h5>
                 <ol class="mb-0">

@@ -1,12 +1,14 @@
-{{-- Stats Card Component - Alternative Method --}}
-{{-- Usage: <x-stats-card icon="fa-books" color="success" :count="10" label="Books Available" /> --}}
+{{-- Stats Card Component - Compact Horizontal Layout --}}
+{{-- Usage: <x-stats-card icon="fa-book-open" :count="10" label="Books Available" /> --}}
 
-@props(['icon', 'color' => 'primary', 'count', 'label'])
+@props(['icon', 'count', 'label'])
 
-<div class="card border-0 text-white gradient-{{ $color }}" style="border-radius: 15px;">
-    <div class="card-body text-center">
-        <i class="fas {{ $icon }} fa-2x mb-2"></i>
-        <h3 class="mb-0">{{ $count }}</h3>
-        <small>{{ $label }}</small>
+<div class="stats-card-wrapper">
+    <div class="stats-card">
+        <div class="stats-card-header">
+            <i class="fas {{ $icon }} stats-card-icon"></i>
+            <span class="stats-card-label">{{ $label }}</span>
+        </div>
+        <div class="stats-card-count">{{ $count }}</div>
     </div>
 </div>
