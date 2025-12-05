@@ -6,17 +6,16 @@
 <!-- Page Header -->
 <div class="page-header">
     <h1>
-        <i class="fas fa-books"></i>
         Book Management System
     </h1>
     <p class="mb-0 mt-2">Manage your library collection efficiently</p>
 </div>
 
-<!-- Filter & Action Buttons -->
-<div class="row mb-4">
+
+<div class="row mb-4 align-items-center">
     <div class="col-md-6 mb-3 mb-md-0">
-        <form method="GET" action="{{ route('books.index') }}" class="d-flex">
-            <select name="category" class="form-select me-2">
+        <form method="GET" action="{{ route('books.index') }}" class="d-flex align-items-stretch gap-2">
+            <select name="category" class="form-select" style="max-width: 250px;">
                 <option value="">📚 All Categories</option>
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -28,7 +27,7 @@
                 <i class="fas fa-filter"></i> Filter
             </button>
             @if(request('category'))
-            <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action ms-2">
+            <a href="{{ route('books.index') }}" class="btn btn-secondary btn-action">
                 <i class="fas fa-times"></i> Clear
             </a>
             @endif
@@ -44,7 +43,7 @@
 <!-- Books Table -->
 <div class="table-container">
     <table class="table table-hover mb-0">
-        <thead>
+        <thead style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
             <tr>
                 <th><i class="fas fa-hashtag"></i> ID</th>
                 <th><i class="fas fa-book"></i> Title</th>
@@ -80,7 +79,9 @@
                     @endif
                 </td>
                 <td>
-                    <span class="badge bg-primary">{{ $book->category->name }}</span>
+                    <span class="badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-size: 0.875rem; padding: 6px 12px;">
+                        {{ $book->category->name }}
+                    </span>
                 </td>
                 <td>
                     <div class="d-flex gap-2">
@@ -114,7 +115,7 @@
     </table>
 </div>
 
-<!-- Summary Card -->
+
 @if($books->count() > 0)
 <div class="row mt-4">
     <div class="col-md-12">
